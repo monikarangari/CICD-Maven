@@ -14,8 +14,8 @@ pipeline{
    {steps{sh 'docker build -t 652912600783.dkr.ecr.us-east-1.amazonaws.com/maven-cicd-demo:latest .'}}
    
    stage('push to ecr')
-   {steps{withDockerRegistry(credentialsId: 'ecr:us-east-1:aws', url: '652912600783.dkr.ecr.us-east-1.amazonaws.com/maven-cicd-demo') 
-   {sh 'docker push https://652912600783.dkr.ecr.eu-central-1.amazonaws.com/devopsoct:latest'}
+   {steps{withDockerRegistry(credentialsId: 'ecr:us-east-1:aws', url: 'https://652912600783.dkr.ecr.us-east-1.amazonaws.com/maven-cicd-demo') 
+   {sh 'docker push 652912600783.dkr.ecr.eu-central-1.amazonaws.com/devopsoct:latest'}
 }}
      
      }}
