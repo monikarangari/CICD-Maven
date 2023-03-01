@@ -1,14 +1,14 @@
 pipeline{
  agent any
   stages{
-   stage('SCM Checkout')  {
-    steps{git branch: 'master', url: 'https://github.com/monikarangari/CICD-Maven/'}}
+   stage('SCM Checkout')  
+   {steps{git branch: 'master', url: 'https://github.com/monikarangari/CICD-Maven/'}}
     
-    stage('Build package'){
-    steps{withMaven(globalMavenSettingsConfig: 'cc81f474-de3c-4868-aa8b-f065e8a63d80', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: 'e2e32ef2-5bce-47bc-8864-ccfa92db0643') 
+    stage('Build package') 
+    {steps {withMaven(globalMavenSettingsConfig: 'cc81f474-de3c-4868-aa8b-f065e8a63d80', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: 'e2e32ef2-5bce-47bc-8864-ccfa92db0643') 
     {sh 'mvn clean package'}
    }
    
-   stage('build docker image'){
-   steps{sh 'docker build -t 652912600783.dkr.ecr.us-east-1.amazonaws.com/maven-cicd-demo:latest .'}}
+   stage('build docker image') 
+   {steps{sh 'docker build -t 652912600783.dkr.ecr.us-east-1.amazonaws.com/maven-cicd-demo:latest .'}}
      }}}
