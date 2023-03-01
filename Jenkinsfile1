@@ -5,7 +5,7 @@ pipeline{
     steps{git branch: 'master', url: 'https://github.com/monikarangari/CICD-Maven/'}}
     
     stage('Build package'){
-    steps{withMaven(globalMavenSettingsConfig: 'ebc5ad56-c96f-4fab-a45b-52ceaae2533b', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: 'c924b2cc-4b56-4cbe-b63c-658c1b1bdf0f') 
+    steps{withMaven(globalMavenSettingsConfig: 'cc81f474-de3c-4868-aa8b-f065e8a63d80', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: 'e2e32ef2-5bce-47bc-8864-ccfa92db0643') 
     {sh 'mvn clean package'}
    }
      }}}
