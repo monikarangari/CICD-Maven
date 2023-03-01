@@ -3,5 +3,9 @@ pipeline{
   stages{
    stage('SCM Checkout')  {
     steps{git branch: 'master', url: 'https://github.com/monikarangari/CICD-Maven/'}}
-     
+    
+    stage('Build package'){
+    steps{withMaven(globalMavenSettingsConfig: 'ebc5ad56-c96f-4fab-a45b-52ceaae2533b', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: 'c924b2cc-4b56-4cbe-b63c-658c1b1bdf0f') 
+    {sh 'mvn clean package'}
+   }
      }}
