@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcatwebapp
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+      author: monika
+  template:
+    metadata:
+      labels:                           #labels should match with matchLabels
+        app: frontend
+        author: monika
+    spec:
+      containers:
+      - name: tomcatwebapp
+        image: 652912600783.dkr.ecr.us-east-1.amazonaws.com/maven-cicd
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcatwebapp-service
+spec:
+  selector:                       #should match with Deployment's template label
+    app: frontend
+    author: monika
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+ 
